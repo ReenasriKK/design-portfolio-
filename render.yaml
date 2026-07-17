@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: reenasri-portfolio
+    env: docker
+    repo: https://github.com/ReenasriKK/design-portfolio-.git
+    branch: main
+    plan: free
+    region: oregon
+    buildCommand: ""
+    startCommand: ""
+    autoDeploy: true
