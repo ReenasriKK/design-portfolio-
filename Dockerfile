@@ -5,8 +5,8 @@ WORKDIR /app
 # Install pnpm via corepack
 RUN corepack enable && corepack prepare pnpm@10.4.1 --activate
 
-# Copy package manifests
-COPY package.json pnpm-lock.yaml ./
+# Copy package manifests and patch files needed by pnpm
+COPY package.json pnpm-lock.yaml patches ./
 
 # Install dependencies
 RUN pnpm install --frozen-lockfile
