@@ -5,14 +5,11 @@ WORKDIR /app
 # Install pnpm via corepack
 RUN corepack enable && corepack prepare pnpm@10.4.1 --activate
 
-# Copy package manifests and patch files needed by pnpm
-COPY package.json pnpm-lock.yaml patches ./
+# Copy the full project so patch files are available during install
+COPY . .
 
 # Install dependencies
 RUN pnpm install --frozen-lockfile
-
-# Copy rest of the project
-COPY . .
 
 # Build the client and the server
 RUN pnpm build
